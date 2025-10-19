@@ -6,7 +6,7 @@
                 <div class="mb-3">
                     <!--Id es para referenciar en html, name para referenciar el elemento en el Js-->
                     <label class="form-label" for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" v-model="userData.name" value="">
+                    <input type="text" class="form-control" id="name" v-model="this.userData.name" value="">
 
                 </div>
                 <div class="mb-3">
@@ -15,18 +15,18 @@
                     <input type="text" class="form-control" id="email" aria-describedby="messageEmail"
                         v-model="this.userData.email" value="">
                     <div id="messageEmail" class="form-text">Ingresa correo institucional. Ej: 1234567@umich.mx </div>
-                    <div class="alert alert-danger" role="alert" v-if="validationData.invalidateEmail == true">
+                    <div class="alert alert-danger" role="alert" v-if="this.validationData.invalidateEmail == true">
                         <p>Debes acceder con tu correo institucional</p>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" v-model="userData.password" value=""
+                    <input type="password" class="form-control" id="password" v-model="this.userData.password" value=""
                         aria-describedby="messagePassword">
                     <div id="messagePassword" class="form-text">La contraseña debe tener al menos 8 caracteres, contener
                         un dígito (0-9) y una mayúscula (A-Z)</div>
                     <br>
-                    <div class="alert alert-danger" role="alert" v-if="validationData.invalidatePassword == true">
+                    <div class="alert alert-danger" role="alert" v-if="this.validationData.invalidatePassword == true">
                         <p>La contraseña debe tener al menos 8 caracteres, contener un dígito (0-9) y una mayúscula
                             (A-Z)</p>
                     </div>
