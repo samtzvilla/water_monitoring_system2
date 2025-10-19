@@ -34,11 +34,6 @@ const router = createRouter({
           component: modalRegister
         },
       ]
-    },
-    {
-      path: '/devices',
-      name:"devices",
-      component: devices
     }
   ],
 })

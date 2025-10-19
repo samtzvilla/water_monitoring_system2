@@ -1,8 +1,15 @@
 <template>
     <div class="d-flex justify-content-center align-items-center">
         <div class="row">
-            <!--El device se toma como hijo del devices-->
+            <!--El device se toma como hijo del devices, el v-for se ejecuta una sola vez, se debe crear una copia de cada uno para mostrar detalles-->
             <device v-for="dispositivo in devices" :device="dispositivo"></device>
+        </div>
+        <div class="row">
+            <div class="btn-group" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary" @click="this.$emit('refresh')">refresh</button>
+                <button type="button" class="btn btn-secondary" @click="this.$emit('start')">Iniciar</button>
+                <button type="button" class="btn btn-secondary" @click="this.$emit('stop')">Detener</button>
+            </div>
         </div>
     </div>
 </template>
@@ -16,64 +23,26 @@ export default
         {
             devices:
             {
-                type:Array, // Objetc o array si son varios
-                required:true
+                type: Array, // Objetc o array si son varios
+                required: true
             }
         },
         data: function () {
-            return{/*
-                dispositivos: [
-                    {
-                        id: 1,
-                        name: "Bomba de Zitácuaro",
-                        location: "Zitácuaro",
-                        v_min: 20,
-                        v_max: 124,
-                        i_min: 5,
-                        i_max: 50,
-                        q_min: 20,
-                        q_max: 120
-                    },
-                    {
-                        id: 2,
-                        name: "Bomba de Morelia",
-                        location: "Morelia",
-                        v_min: 15,
-                        v_max: 150,
-                        i_min: 5,
-                        i_max: 30,
-                        q_min: 30,
-                        q_max: 140
-                    },
-                    {
-                        id: 3,
-                        name: "Bomba de Zacapu",
-                        location: "Zacapu",
-                        v_min: 30,
-                        v_max: 140,
-                        i_min: 18,
-                        i_max: 40,
-                        q_min: 20,
-                        q_max: 100
-                    },
-                    {
-                        id: 4,
-                        name: "Bomba de Uruapan",
-                        location: "Uruapan",
-                        v_min: 20,
-                        v_max: 124,
-                        i_min: 5,
-                        i_max: 50,
-                        q_min: 20,
-                        q_max: 120
-                    },
-                ]*/
+            return {
             }
         },
         components:
         {
             device
-        }
+        },
+        methods:
+        {
+            // LOS MÉTODOS DEL OBJETO YA NO NECESITAN LA WORDKEY FUNCTION
+            async readDB() {
+                const res = await fetch("http://localhost:8080/data")
+                console.log(res)
+            },
+        },
     }
 </script>
 
