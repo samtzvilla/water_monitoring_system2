@@ -9,12 +9,12 @@
         </div>
         <div class="modal-body">
           <p class="card-text">Id: {{ dispositivo_actual.id }}<br>Nombre: {{ dispositivo_actual.name }}<br>Ubicación: {{ dispositivo_actual.location }}<br>Estado: {{ dispositivo_actual.status }}</p>
-          <p class="card-text">Voltaje mínimo = {{ dispositivo_actual.v_min }} KV<br>Voltaje máximo = {{dispositivo_actual.v_max }} KV</p>
-          <p class="card-text">Corriente mínima = {{ dispositivo_actual.i_min }} A<br> Corriente máxima = {{dispositivo_actual.i_max }} A</p>
-          <p class="card-text">Caudal mínimo = {{ dispositivo_actual.q_min }} <br> Caudal máximo = {{ dispositivo_actual.q_max}}</p>
+          <p class="card-text">Voltaje mínimo = {{ dispositivo_actual.v_min }} KV <br> Voltaje nominal = {{dispositivo_actual.v_nom}} KV <br> Voltaje máximo = {{dispositivo_actual.v_max }} KV</p>
+          <p class="card-text">Corriente mínima = {{ dispositivo_actual.i_min }} A <br> Corriente nominal = {{dispositivo_actual.i_nom}} A <br> Corriente máxima = {{dispositivo_actual.i_max }} A</p>
+          <p class="card-text">Caudal mínimo = {{ dispositivo_actual.q_min }} L/s <br> Caudal nominal = {{dispositivo_actual.q_nom}} L/s <br> Caudal máximo = {{ dispositivo_actual.q_max}} L/s</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"  @click="printObject" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
 <script>
 export default
   {
-    name: "infoDevice",
+    name: "InfoDevice",
     props:
     {
       dispositivo_actual:

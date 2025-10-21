@@ -17,7 +17,9 @@
 
     <!--Se pasa la lista de dispositivos a los componentes hijos para que puedan consultarlos
     addSystem es la función que pidió el hijo, $event es el dispositivo que mandó el hijo-->
+    <br>
     <modalRegister :devices="dispositivos" @addSystem ="dispositivos.push($event)"></modalRegister>
+    <br>
   </div>
 </template>
 
@@ -25,97 +27,13 @@
 // Se importa el componente (etiqueta coustomizada) que utiliza el componente actual, se añade en components
 import devices from './list_devices.vue'
 import modalRegister from './modalRegister.vue'
-import navbar from "./navbar.vue"
+import navbar from "./navbar.vue" 
+import DSDispositivos from '../services/DSDispositivos'
+
 export default {
     name: "init",
     data: function () {
       return {
-        dispositivos: [
-          {
-            id: 1,
-            name: "Bomba de Zitácuaro",
-            location: "Zitácuaro",
-            status:"On",
-            v_min: 20,
-            v_max: 124,
-            v_nom: 130,
-            i_min: 5,
-            i_max: 50,
-            i_nom: 30,
-            q_min: 20,
-            q_max: 120,
-            q_nom: 60,
-            opera: {
-              voltaje:0,
-              corriente:0,
-              caudal:0,
-              status:0
-            }
-          },
-          {
-            id: 2,
-            name: "Bomba de Morelia",
-            location: "Morelia",
-            status:"On",
-            v_min: 15,
-            v_max: 150,
-            v_nom: 130,
-            i_min: 5,
-            i_max: 30,
-            i_nom: 30,
-            q_min: 30,
-            q_max: 140,
-            q_nom: 60,
-            opera: {
-              voltaje:0,
-              corriente:0,
-              caudal:0,
-              status:0
-            }
-          },
-          {
-            id: 3,
-            name: "Bomba de Zacapu",
-            location: "Zacapu",
-            status:"On",
-            v_min: 30,
-            v_max: 140,
-            v_nom: 130,
-            i_min: 18,
-            i_max: 40,
-            i_nom: 30,
-            q_min: 20,
-            q_max: 100,
-            q_nom: 60,
-            opera: {
-              voltaje:0,
-              corriente:0,
-              caudal:0,
-              status:0
-            }
-          },
-          {
-            id: 4,
-            name: "Bomba de Uruapan",
-            location: "Uruapan",
-            status:"On",
-            v_min: 20,
-            v_max: 124,
-            v_nom: 130,
-            i_min: 5,
-            i_max: 50,
-            i_nom: 30,
-            q_min: 20,
-            q_max: 120,
-            q_nom: 60,
-            opera: {
-              voltaje:0,
-              corriente:0,
-              caudal:0,
-              status:0
-            }
-          },
-        ],
         nIntervId:null
       }
     },
@@ -123,6 +41,11 @@ export default {
       devices,
       modalRegister,
       navbar
+    },
+    computed: {
+          dispositivos() {
+            return this.$store.state.dispositivos
+          }
     },
     methods:
     {
@@ -153,14 +76,21 @@ export default {
             stop() {
                 clearInterval(this.nIntervId);
                 this.nIntervId = null;
+            },
+    },
+    // Función que se ejecuta automáticamente al crearse el componente
+    created () {
+          //this.$store.
+          this.$store.commit('setDispositivos', DSDispositivos.getListaDataStore())
+          //DSDispositivos.init()
+          //this.Dispositivos = DSDispositivos.getListaDataStore()
             }
-    }
   }
 </script>
 
 <style>
 #frame {
-  background-color: cornflowerblue;
+
   height: max-content;
 }
 </style>

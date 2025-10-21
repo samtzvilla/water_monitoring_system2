@@ -1,6 +1,8 @@
 <template>
 
   <!-- Button trigger modal -->
+   <div class="text-center">
+
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar sistema</button>
 
   <!-- Modal -->
@@ -66,10 +68,12 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" @click="sendSystem">Guardar sistema</button>
+          <button type="button" class="btn btn-primary" @click="sendSystem">Agregar sistema</button>
         </div>
       </div>
     </div>
+  </div>
+
   </div>
 </template>
 

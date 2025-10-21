@@ -1,9 +1,9 @@
 <template>
-    <div id="login" class="card bg-transparent mb-3 card-center login-card">
+    <div id="login" class="card bg-light mb-3 card-center login-card">
       <div class="card-body"> <!--Encabezado de la tarjeta-->
         <div class="text-center">
-          <h4 class="card-title" title="Plataforma para monitoreo de Sistemas de Bombeo">Plataforma de monitoreo</h4>
-          <h5 class="card-subtitle">Sistema de bombeo</h5>
+          <h4 class="card-title text-primary" title="Plataforma para monitoreo de Sistemas de Bombeo">Plataforma de monitoreo</h4>
+          <h5 class="card-subtitle text-secondary">Sistema de bombeo</h5>
         </div>
         <div class="row p-1"> <!--El row hace que los componentes esten sepadados, con una line
               de no se así loc componentes estarian pegados-->
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="row p-2">
-          <button class="btn btn-outline-success" type="button" @click="validar()"> Iniciar sesión </button>
+          <button class="btn btn-outline-success btn-secondary text-light" type="button" @click="validar()"> Iniciar sesión </button>
         </div>
         <div class="card-body text-center">
             <a class="card-link" href="#" @click="register()">Registrarme</a>
@@ -42,8 +42,8 @@
   </template>
   
   <script>
-  // Se importan las funciones de los servicios
-  import sessionStorage from '../services/sessionStorage'
+
+import sessionStorage from '../services/sessionStorage';
   export default {
     name: 'Login',
     components: {   // Otros componentes que use 
@@ -56,6 +56,7 @@
         login: {
           userName: '', // Se vincularan con la directiva v-model
           password: '',
+          email:""
         },
         alerta: {
           mensaje: '',
@@ -67,10 +68,11 @@
       validar() {
         // Esta es una ruta al que direccionará el ruter cuando se presione el botón
         // Esa ruta podria referenciar al desplieque de otro componente (página de inicio.)
-        if (sessionStorage.getVerificaUsuario(this.login.userName, this.login.password)) // Se validan las credenciales
+        console.log(login)
+        if(sessionStorage.getVerificaUsuario(this.login.userName, this.login.password))
           this.$router.push('/init')  // Router es una variable exportada del proyecto, se llama con $, por otra parte las clases se importan
         else
-          this.alerta.mensaje = "Usuario no válido"   // Mensaje de alerta si no son validas
+          this.alerta.mensaje = "Credenciales incorrectas"   // Mensaje de alerta si no son validas
       },
       limpiarControles() {
         this.alerta.mensaje = ''
@@ -89,8 +91,9 @@
       {
         this.$router.push("/register")
       }
-    }
-  }
+    },
+
+}
   </script>
   
   <style scoped>
@@ -131,5 +134,11 @@
   
   .login-full-width {
     width: 100%;
+  }
+
+  #login
+  {
+    width: 500px;
+    height: 350px;
   }
   </style>

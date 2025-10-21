@@ -123,6 +123,8 @@ export default
                 console.log(this.validationData.invalidateEmail)
             }
         }
+    
+        
     }
 
 </script>
