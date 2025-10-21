@@ -2,8 +2,8 @@
     <div>
         <div class="row">
             <!--El device se toma como hijo del devices, el v-for se ejecuta una sola vez, se debe crear una copia de cada uno para mostrar detalles, también se habilita
-            el método setDispositivo que pide ejecutar el componente hijo-->
-            <device v-for="dispositivo in devices" :device="dispositivo" @setDispositivo="setDispositivo"></device>
+            el método setDispositivo que pide ejecutar el componente hijo (el botón ver detalles hace que el current_device sea igual al que envía el componente device)-->
+            <device v-for="dispositivo in devices" :key="dispositivo.id" :device="dispositivo" @setDispositivo="setDispositivo"></device>
         </div>
     <!--El modal se muestra una vez se presiona el botón, en ese momento se ejecuta un método para salvar el dispositivo actual en el que se presiona el botón, para mostrar su info-->
         <InfoDevice :dispositivo_actual="current_device"></InfoDevice>
@@ -35,20 +35,18 @@ export default
             return {
             current_device:{
             id:undefined,
-            name: undefined,
-            location: undefined,
-            status:undefined,
-            v_min: undefined,
-            v_max: undefined,
-            v_nom: undefined,
-            i_min: undefined,
-            i_max: undefined,
-            i_nom: undefined,
-            q_min: undefined,
-            q_max: undefined,
-            q_nom: undefined,
-            opera: undefined
-          }
+            nombre: undefined,
+            ubicacion: undefined,
+            coordenadas: undefined,
+            potencia:{nominal: 0, minimo: 0, maximo: 0, um: ""},
+            voltaje: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            intensidad: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            flujo: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            presion: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            temp: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            humedad: {nominal: 0, minimo: 0, maximo: 0, um: ""},
+            fecha_registro:null
+        }
             }
         },
         components:
@@ -65,7 +63,7 @@ export default
             },
             setDispositivo(device)
             {
-                console.log(device)
+                //console.log(device)
                 this.current_device = device
 
             }

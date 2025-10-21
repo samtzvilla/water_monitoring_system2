@@ -20,50 +20,109 @@
           <form>
             <div class="mb-3">
               <!--Id es para referenciar en html, name para referenciar el elemento en el Js-->
-              <label class="form-label" for="name">Name</label>
-              <input type="text" class="form-control" id="name" v-model="this.name" value="">
+              <label class="form-label" for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" v-model="this.nombre" value="">
             </div>
             <div class="mb-3">
-              <label for="location" class="form-label">Location</label>
-              <input type="text" class="form-control" id="location" v-model="this.location" value="">
+              <label for="ubicacion" class="form-label">Ubicación</label>
+              <input type="text" class="form-control" id="ubicacion" v-model="this.ubicacion" value="">
             </div>
+            <div class="mb-3">
+              <label for="coordenadas" class="form-label">Coordenadas</label>
+              <input type="text" class="form-control" id="coordenadas" v-model="this.coordenadas" value="">
+            </div>
+            
+             <div class="mb-3">
+              <label for="p_min" class="form-label">Potencia mínima</label>
+              <input type="number" class="form-control" id="p_min" v-model="this.potencia.minimo" value="">
+            </div>    
+            <div class="mb-3">
+              <label for="p_max" class="form-label">Potencia máxima</label>
+              <input type="number" class="form-control" id="p_max" v-model="this.potencia.maximo" value="">
+            </div> 
+            <div class="mb-3">
+              <label for="p_nom" class="form-label">Potencia nominal</label>
+              <input type="number" class="form-control" id="p_nom" v-model="this.potencia.nominal" value="">
+            </div>  
+
             <div class="mb-3">
               <label for="v_min" class="form-label">Voltaje mínimo</label>
-              <input type="number" class="form-control" id="v_min" v-model="this.v_min" value="">
+              <input type="number" class="form-control" id="v_min" v-model="this.voltaje.minimo" value="">
             </div>    
             <div class="mb-3">
               <label for="v_max" class="form-label">Voltaje máximo</label>
-              <input type="number" class="form-control" id="v_max" v-model="this.v_max" value="">
+              <input type="number" class="form-control" id="v_max" v-model="this.voltaje.maximo" value="">
             </div> 
             <div class="mb-3">
-              <label for="v_max" class="form-label">Voltaje nominal</label>
-              <input type="number" class="form-control" id="v_nom" v-model="this.v_nom" value="">
-            </div>     
+              <label for="v_nom" class="form-label">Voltaje nominal</label>
+              <input type="number" class="form-control" id="v_nom" v-model="this.voltaje.nominal" value="">
+            </div>   
+
             <div class="mb-3">
-              <label for="i_min" class="form-label">Corriente mínima</label>
-              <input type="number" class="form-control" id="i_min" v-model="this.i_min" value="">
+              <label for="i_min" class="form-label">Intensidad mínima</label>
+              <input type="number" class="form-control" id="i_min" v-model="this.intensidad.minimo" value="">
             </div>
             <div class="mb-3">
-              <label for="i_max" class="form-label">Corriente máxima</label>
-              <input type="number" class="form-control" id="i_max" v-model="this.i_max" value="">
+              <label for="i_max" class="form-label">Intensidad máxima</label>
+              <input type="number" class="form-control" id="i_max" v-model="this.intensidad.maximo" value="">
             </div>
             <div class="mb-3">
-              <label for="i_max" class="form-label">Corriente nominal</label>
-              <input type="number" class="form-control" id="i_nom" v-model="this.i_nom" value="">
+              <label for="i_nom" class="form-label">Intensidad nominal</label>
+              <input type="number" class="form-control" id="i_nom" v-model="this.intensidad.nominal" value="">
+            </div>
+
+            <div class="mb-3">
+              <label for="q_min" class="form-label">Flujo mínimo</label>
+              <input type="number" class="form-control" id="q_min" v-model="this.flujo.minimo" value="">
             </div>
             <div class="mb-3">
-              <label for="q_min" class="form-label">Caudal mínimo</label>
-              <input type="number" class="form-control" id="q_min" v-model="this.q_min" value="">
+              <label for="q_max" class="form-label">Flujo máximo</label>
+              <input type="number" class="form-control" id="q_max" v-model="this.flujo.maximo" value="">
             </div>
             <div class="mb-3">
-              <label for="q_max" class="form-label">Caudal máximo</label>
-              <input type="number" class="form-control" id="q_max" v-model="this.q_max" value="">
+              <label for="q_nom" class="form-label">Flujo nominal</label>
+              <input type="number" class="form-control" id="q_nom" v-model="this.flujo.nominal" value="">
             </div>
+
             <div class="mb-3">
-              <label for="i_max" class="form-label">Caudal nominal</label>
-              <input type="number" class="form-control" id="i_nom" v-model="this.q_nom" value="">
+              <label for="pre_min" class="form-label">Presión mínima</label>
+              <input type="number" class="form-control" id="pre_min" v-model="this.presion.minimo" value="">
+            </div>    
+            <div class="mb-3">
+              <label for="pre_max" class="form-label">Presión máxima</label>
+              <input type="number" class="form-control" id="pre_max" v-model="this.presion.maximo" value="">
+            </div> 
+            <div class="mb-3">
+              <label for="pre_nom" class="form-label">Presión nominal</label>
+              <input type="number" class="form-control" id="pre_nom" v-model="this.presion.nominal" value="">
             </div>
-                      
+
+            <div class="mb-3">
+              <label for="t_min" class="form-label">Temperatura mínima</label>
+              <input type="number" class="form-control" id="t_min" v-model="this.temp.minimo" value="">
+            </div>    
+            <div class="mb-3">
+              <label for="t_max" class="form-label">Temperatura máxima</label>
+              <input type="number" class="form-control" id="t_max" v-model="this.temp.maximo" value="">
+            </div> 
+            <div class="mb-3">
+              <label for="t_nom" class="form-label">Temperatura nominal</label>
+              <input type="number" class="form-control" id="t_nom" v-model="this.temp.nominal" value="">
+            </div> 
+
+            <div class="mb-3">
+              <label for="h_min" class="form-label">Humedad mínima</label>
+              <input type="number" class="form-control" id="h_min" v-model="this.humedad.minimo" value="">
+            </div>    
+            <div class="mb-3">
+              <label for="h_max" class="form-label">Humedad máxima</label>
+              <input type="number" class="form-control" id="h_max" v-model="this.humedad.maximo" value="">
+            </div> 
+            <div class="mb-3">
+              <label for="h_nom" class="form-label">Humedad nominal</label>
+              <input type="number" class="form-control" id="h_nom" v-model="this.humedad.nominal" value="">
+            </div>  
+            
           </form>
         </div>
         <div class="modal-footer">
@@ -84,20 +143,18 @@ export default {
   data() {
     return {
       // Atributos para añadir un nuevo sistema
-      id:-1,
-      name: "",
-      location: "",
-      status:"",
-      v_min: undefined,
-      v_max: undefined,
-      v_nom: undefined,
-      i_min: undefined,
-      i_max: undefined,
-      i_nom: undefined,
-      q_min: undefined,
-      q_max: undefined,
-      q_nom: undefined,
-      opera:undefined
+      id:undefined,
+      nombre: undefined,
+      ubicacion: undefined,
+      coordenadas: undefined,
+      potencia:{nominal: undefined, minimo: undefined, maximo: undefined, um: "KW"},
+      voltaje: {nominal: undefined, minimo: undefined, maximo: undefined, um: "V"},
+      intensidad: {nominal: undefined, minimo: undefined, maximo: undefined, um: "A"},
+      flujo: {nominal: undefined, minimo: undefined, maximo: undefined, um: "LPM"},
+      presion: {nominal: undefined, minimo: undefined, maximo: undefined, um: "BAR"},
+      temp: {nominal: undefined, minimo: undefined, maximo: undefined, um: "C"},
+      humedad: {nominal: undefined, minimo: undefined, maximo: undefined, um: "%"},
+      fecha_registro:null
     }
   },
   props:
@@ -111,16 +168,10 @@ export default {
   methods: {
     sendSystem()
     {
-      // Se crea un nuevo objeto y se añade al arreglo
-      let elements = this.devices.length + 1
-      let reactive_values = {
-        voltaje:0,
-        corriente: 0,
-        caudal: 0,
-        status:-1
+      const nuevo_sistema = {id:this.id, nombre: this.nombre, ubicacion: this.ubicacion, coordenadas:this.coordenadas, potencia:{nominal:this.potencia.nominal, minimo:this.potencia.minimo, maximo:this.potencia.maximo}, voltaje:{nominal:this.voltaje.nominal, minimo:this.voltaje.minimo, maximo:this.voltaje.maximo},
+      intensidad:{nominal:this.intensidad.nominal, minimo:this.intensidad.minimo, maximo:this.intensidad.maximo}, flujo:{nominal:this.voltaje.nominal, minimo:this.voltaje.minimo, maximo:this.voltaje.maximo}, presion: {nominal:this.presion.nominal, minimo:this.presion.minimo, maximo:this.presion.maximo},
+      temp:{nominal:this.temp.nominal, minimo:this.temp.minimo, maximo:this.temp.maximo}, humedad:{nominal:this.humedad.nominal, minimo:this.humedad.minimo, maximo:this.humedad.maximo}, fecha_registro: this.fecha_registro
       }
-      const nuevo_sistema = {id:elements, name: this.name, location: this.location, status:"On", v_min:this.v_min, v_max:this.v_max, v_nom: this.v_nom,
-      i_min:this.i_min, i_max:this.i_max, i_nom: this.i_nom, q_min:this.q_min, q_max:this.q_max, q_nom: this.q_nom, opera: reactive_values}
       this.$emit("addSystem", nuevo_sistema)  // Llama a que el padre ejecute la función pasándole el parámetro
     }
   },

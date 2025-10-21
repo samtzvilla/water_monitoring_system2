@@ -2,7 +2,7 @@ class Servicio{
     
     getVerificaUsuario(user, password)
     {
-        if(user === 'uno' && password === 'unomasuno')
+        if(user === 'samuel' && password === 'samuel')
             return true
         else
             return false

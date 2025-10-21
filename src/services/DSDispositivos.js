@@ -1,101 +1,40 @@
 class DSDispositivos {
-  getListaDataStore() {
-    return [
-        {
-          id: 1,
-          name: "Bomba de Zitácuaro",
-          location: "Zitácuaro",
-          status:"On",
-          v_min: 20,
-          v_max: 124,
-          v_nom: 130,
-          i_min: 5,
-          i_max: 50,
-          i_nom: 30,
-          q_min: 20,
-          q_max: 120,
-          q_nom: 60,
-          opera: {
-            voltaje:0,
-            corriente:0,
-            caudal:0,
-            status:0
-          }
-        },
-        {
-          id: 2,
-          name: "Bomba de Morelia",
-          location: "Morelia",
-          status:"On",
-          v_min: 15,
-          v_max: 150,
-          v_nom: 130,
-          i_min: 5,
-          i_max: 30,
-          i_nom: 30,
-          q_min: 30,
-          q_max: 140,
-          q_nom: 60,
-          opera: {
-            voltaje:0,
-            corriente:0,
-            caudal:0,
-            status:0
-          }
-        },
-        {
-          id: 3,
-          name: "Bomba de Zacapu",
-          location: "Zacapu",
-          status:"On",
-          v_min: 30,
-          v_max: 140,
-          v_nom: 130,
-          i_min: 18,
-          i_max: 40,
-          i_nom: 30,
-          q_min: 20,
-          q_max: 100,
-          q_nom: 60,
-          opera: {
-            voltaje:0,
-            corriente:0,
-            caudal:0,
-            status:0
-          }
-        },
-        {
-          id: 4,
-          name: "Bomba de Uruapan",
-          location: "Uruapan",
-          status:"On",
-          v_min: 20,
-          v_max: 124,
-          v_nom: 130,
-          i_min: 5,
-          i_max: 50,
-          i_nom: 30,
-          q_min: 20,
-          q_max: 120,
-          q_nom: 60,
-          opera: {
-            voltaje:0,
-            corriente:0,
-            caudal:0,
-            status:0
-          }
-        },
-      ]
-  }
-  /*
-  Estos metodos implementan una capa de abstraccion entre el almacen de datos y la UI
-  Sella a la data store local o a la API Rest.
-  */
-  // Data Store local 
-  getLista() {
-    return Promise.resolve(this.getListaDataStore());
-  }
 
+  async getListaFromAPI() {
+    const res = await fetch('http://localhost:8080/devices');
+    return await res.json();
+  }
+  
+  async setDevicetoAPI(event) {
+    // Se preparan los datos para hacer el fetch, se desestructura el objeto para obtener los parámetros de la query
+    const datos = 
+    {
+      id:undefined, // Se desconoce, la db lo pone, en getListaFromAPI ya aparecerá
+      nombre: event.nombre,
+      ubicacion: event.ubicacion,
+      coordenadas: event.coordenadas,
+      potencia:{nominal: event.potencia.nominal, minimo: event.potencia.minimo, maximo: event.potencia.maximo, um: event.potencia.um},
+      voltaje: {nominal: event.voltaje.nominal, minimo: event.voltaje.minimo, maximo: event.voltaje.maximo, um: event.voltaje.um},
+      intensidad: {nominal: event.intensidad.nominal, minimo: event.intensidad.minimo, maximo: event.intensidad.maximo, um: event.intensidad.um},
+      flujo: {nominal: event.flujo.nominal, minimo: event.flujo.minimo, maximo: event.flujo.maximo, um: event.flujo.um},
+      presion: {nominal: event.presion.nominal, minimo: event.presion.minimo, maximo: event.presion.maximo, um: event.presion.um},
+      temp: {nominal: event.temp.nominal, minimo: event.temp.minimo, maximo: event.temp.maximo, um: event.temp.um},
+      humedad: {nominal: event.humedad.nominal, minimo: event.humedad.minimo, maximo: event.humedad.maximo, um: event.humedad.um},
+      fecha_registro:null
+    };
+
+    console.log(datos);
+    
+    const res = await fetch('http://localhost:8080/addDevice', 
+    {
+      method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(datos) // Ocupa que el back sepa manejar los jsons (express.json())
+    });
+    return await res.json();  // SE devuelve el nuevo componente
+  }
 }
 
 export default new DSDispositivos()
